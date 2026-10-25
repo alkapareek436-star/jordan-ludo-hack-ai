@@ -1,0 +1,392 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{--bg:#070b13;--panel:#101827;--line:#263449;--gold:#f5c451;--mint:#55e6b1;--text:#f4f7fb;--muted:#95a4b8}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 50% -10%,#1b2d49 0%,#070b13 54%);color:var(--text);font-family:Inter,Arial,sans-serif;min-height:100vh}
+button,input{font:inherit}
+.app-shell{max-width:560px;margin:0 auto;min-height:100vh;padding:22px 18px 24px;position:relative;overflow:hidden}
+.top-glow{position:absolute;top:100px;left:50%;transform:translateX(-50%);width:330px;height:330px;background:#1b7d8a;opacity:.1;filter:blur(90px);pointer-events:none}
+.brand{display:flex;align-items:center;gap:10px;border-bottom:1px solid #ffffff12;padding-bottom:18px;position:relative}
+.brand-mark{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--gold);border-radius:10px;color:var(--gold);font-family:Orbitron,sans-serif;font-weight:800}
+.brand-name{font:700 12px Orbitron,sans-serif;letter-spacing:1px}.brand-name span{display:block;color:var(--gold);font-size:10px;margin-top:4px}
+.status{margin-left:auto;color:var(--mint);font:600 8px Orbitron,sans-serif;letter-spacing:.7px;display:flex;align-items:center;gap:6px}
+.status span,.pulse-dot{width:6px;height:6px;background:var(--mint);border-radius:50%;box-shadow:0 0 10px var(--mint)}
+.hero{text-align:center;position:relative;padding-top:31px}
+.eyebrow{color:var(--gold);font:600 10px Orbitron,sans-serif;letter-spacing:2px}
+h1{font:800 clamp(27px,7vw,39px)/1.25 Orbitron,sans-serif;letter-spacing:-1px;margin:12px 0 9px}
+h1 span{color:var(--gold);text-shadow:0 0 24px #f5c45126}
+.tagline{font:700 12px Orbitron,sans-serif;letter-spacing:1.1px;color:#fff;margin:0}
+.subline{font-size:11px;color:var(--muted);margin:10px 0 0}
+.dice-stage{height:220px;position:relative;display:grid;place-items:center;perspective:800px;isolation:isolate}
+.orbit{position:absolute;border:1px solid #f5c45122;border-radius:50%;width:190px;height:190px;transform:rotateX(68deg)}
+.orbit-two{width:155px;height:155px;transform:rotateY(66deg) rotateX(20deg);border-color:#55e6b129}
+.dice{width:100px;height:100px;position:relative;transform-style:preserve-3d;animation:roll 5s linear infinite;filter:drop-shadow(0 15px 22px #0008);pointer-events:none}
+.dice-face{position:absolute;width:100px;height:100px;border-radius:19px;background:linear-gradient(145deg,#fff8dd,#e9b945);border:2px solid #fff2bf;display:grid;padding:16px;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:3px;box-shadow:inset 0 0 15px #b97b1a30}
+.dice-face i{width:13px;height:13px;border-radius:50%;background:#15243a;align-self:center;justify-self:center;box-shadow:inset 0 2px 2px #0006}
+.face-front{transform:translateZ(50px)}
+.face-back{transform:rotateY(180deg) translateZ(50px)}
+.face-right{transform:rotateY(90deg) translateZ(50px)}
+.face-left{transform:rotateY(-90deg) translateZ(50px)}
+.face-top{transform:rotateX(90deg) translateZ(50px)}
+.face-bottom{transform:rotateX(-90deg) translateZ(50px)}
+.face-front i:nth-child(1){grid-area:1/1}.face-front i:nth-child(2){grid-area:1/3}.face-front i:nth-child(3){grid-area:2/2}.face-front i:nth-child(4){grid-area:3/1}.face-front i:nth-child(5){grid-area:3/3}
+.face-back i:nth-child(1){grid-area:1/1}.face-back i:nth-child(2){grid-area:1/2}.face-back i:nth-child(3){grid-area:1/3}.face-back i:nth-child(4){grid-area:3/1}.face-back i:nth-child(5){grid-area:3/2}.face-back i:nth-child(6){grid-area:3/3}
+.face-right i:nth-child(1){grid-area:1/1}.face-right i:nth-child(2){grid-area:2/2}.face-right i:nth-child(3){grid-area:3/3}
+.face-left i:nth-child(1){grid-area:1/1}.face-left i:nth-child(2){grid-area:1/3}.face-left i:nth-child(3){grid-area:3/1}.face-left i:nth-child(4){grid-area:3/3}
+.face-top i:nth-child(1){grid-area:1/1}.face-top i:nth-child(2){grid-area:2/2}.face-top i:nth-child(3){grid-area:3/3}
+.face-bottom i:nth-child(1){grid-area:1/1}.face-bottom i:nth-child(2){grid-area:1/3}.face-bottom i:nth-child(3){grid-area:2/2}.face-bottom i:nth-child(4){grid-area:3/1}.face-bottom i:nth-child(5){grid-area:3/3}
+@keyframes roll{0%{transform:rotateX(0) rotateY(0) rotateZ(0)}100%{transform:rotateX(360deg) rotateY(720deg) rotateZ(360deg)}}
+.dice-shadow{position:absolute;bottom:26px;width:110px;height:20px;border-radius:50%;background:#0009;filter:blur(12px);z-index:-1}
+.dice-caption{display:flex;justify-content:center;align-items:center;gap:8px;font:600 9px Orbitron,sans-serif;letter-spacing:1.2px;color:var(--mint)}
+.disclaimer{font-size:10px;color:#78889c;line-height:1.5;max-width:340px;margin:13px auto 0}
+.action-panel,.plans{position:relative;margin-top:27px;background:linear-gradient(145deg,#111c2c,#0d1420);border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:0 15px 40px #0002}
+.panel-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.panel-title{font:700 13px Orbitron,sans-serif;letter-spacing:.6px}.panel-subtitle{font-size:11px;color:var(--muted);margin-top:6px}
+.lock-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:#f5c45112;color:var(--gold);font-size:25px}
+.primary-btn{border:0;border-radius:11px;width:100%;padding:15px 16px;background:linear-gradient(100deg,#f8d875,#e9ad2f);color:#17130a;font:800 11px Orbitron,sans-serif;letter-spacing:.7px;cursor:pointer;box-shadow:0 7px 22px #e9ad2f1c;transition:transform .15s,filter .15s}
+.primary-btn:hover{filter:brightness(1.06);transform:translateY(-1px)}.primary-btn span{float:right;font-size:16px;line-height:11px}
+.secure-note{text-align:center;font:600 8px Orbitron,sans-serif;color:#8192a7;letter-spacing:1px;margin-top:14px}.secure-note span{color:var(--gold);margin-right:5px}
+.plans{margin-top:18px}.hidden{display:none!important}
+.plans-heading{text-align:center;margin-bottom:18px}.plans h2{font:700 21px Orbitron,sans-serif;margin:8px 0}.plans-heading p{font-size:11px;color:var(--muted);line-height:1.5}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.plan-card{background:#0b121e;border:1px solid #2b3a4f;border-radius:13px;padding:15px 12px;text-align:left;color:var(--text);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:7px;transition:border .2s,transform .2s}
+.plan-card:hover,.plan-card:focus{border-color:var(--gold);transform:translateY(-2px);outline:none}
+.plan-card.lifetime{border-color:#8c6a25;background:linear-gradient(140deg,#191a20,#111725)}
+.plan-duration{font:600 9px Orbitron,sans-serif;letter-spacing:1px;color:var(--mint)}
+.plan-card strong{font:800 24px Orbitron,sans-serif}.plan-desc{font-size:10px;color:var(--muted)}.choose{font:600 8px Orbitron,sans-serif;color:var(--gold);margin-top:6px;letter-spacing:.5px}
+.payment-panel{margin-top:17px;border-top:1px solid var(--line);padding-top:17px}
+.payment-top{display:flex;justify-content:space-between;align-items:center;gap:10px}.payment-top strong{font:700 12px Orbitron,sans-serif;color:var(--gold)}
+
+.qr-placeholder {
+  position: relative;
+  margin: 16px auto 12px;
+  border: 1px dashed #53647a;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  min-height: 0;
+  padding: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  background: #0b111b;
+  overflow: visible;
+}
+
+.qr-placeholder img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  max-width: 100%;
+  object-fit: contain;
+  box-sizing: border-box;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+.qr-placeholder button {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .qr-placeholder {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .qr-placeholder img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+.payment-instructions{font-size:11px;line-height:1.55;color:var(--muted)}
+label{display:block;font-size:10px;color:#dce5f0;margin:13px 0 7px}
+input{width:100%;border:1px solid #304057;background:#080e18;border-radius:9px;color:#fff;padding:13px;font-size:12px;outline:none}
+input:focus{border-color:var(--gold)}.payment-panel .primary-btn{margin-top:11px}
+.message{margin-top:11px;padding:11px;border-radius:8px;font-size:11px;background:#152e2a;color:#9bf0d2;line-height:1.5}
+.small-note{font-size:9px;color:#7d8b9e;line-height:1.5}
+footer{text-align:center;font:600 8px Orbitron,sans-serif;color:#526176;letter-spacing:1px;padding:24px 0 0}footer span{color:var(--gold);margin:0 5px}
+@media(max-width:360px){.app-shell{padding-left:12px;padding-right:12px}.plan-card strong{font-size:21px}.status{font-size:7px}.dice-stage{height:200px}}
+@media(prefers-reduced-motion:reduce){.dice{animation-duration:18s}}
+.dice-scene {
+  width: 180px;
+  height: 180px;
+  margin: 30px auto;
+  perspective: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.real-dice {
+  width: 90px;
+  height: 90px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: realDiceSpin 6s linear infinite;
+}
+
+.dice-face {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  box-sizing: border-box;
+  background: linear-gradient(145deg, #ffffff, #e8e8dc);
+  border: 2px solid #d8d8c8;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 12px;
+  backface-visibility: hidden;
+  box-shadow:
+    inset 2px 2px 5px #ffffff,
+    inset -3px -3px 6px #c5c5b8,
+    0 0 18px rgba(255, 224, 91, 0.25);
+}
+
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #444, #090909);
+  align-self: center;
+  justify-self: center;
+  box-shadow: inset 1px 1px 2px #000;
+}
+
+.center {
+  grid-area: 2 / 2;
+}
+
+.top-left {
+  grid-area: 1 / 1;
+}
+
+.top-right {
+  grid-area: 1 / 3;
+}
+
+.middle-left {
+  grid-area: 2 / 1;
+}
+
+.middle-right {
+  grid-area: 2 / 3;
+}
+
+.bottom-left {
+  grid-area: 3 / 1;
+}
+
+.bottom-right {
+  grid-area: 3 / 3;
+}
+
+.face-1 { transform: rotateY(0deg) translateZ(45px); }
+.face-2 { transform: rotateY(90deg) translateZ(45px); }
+.face-3 { transform: rotateY(180deg) translateZ(45px); }
+.face-4 { transform: rotateY(-90deg) translateZ(45px); }
+.face-5 { transform: rotateX(90deg) translateZ(45px); }
+.face-6 { transform: rotateX(-90deg) translateZ(45px); }
+
+@keyframes realDiceSpin {
+  from {
+    transform: rotateX(-20deg) rotateY(0deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(340deg) rotateY(720deg) rotateZ(360deg);
+  }
+}
+.win-ticker {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background: #101b2d;
+  border-top: 1px solid #d9ad43;
+  border-bottom: 1px solid #d9ad43;
+  padding: 13px 0;
+}
+
+.win-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: moveRightToLeft 120s linear infinite;
+}
+
+.win-ticker-track span {
+  flex-shrink: 0;
+  margin-right: 35px;
+  color: #65f0a0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@keyframes moveRightToLeft {
+  from { transform: translateX(100vw); }
+  to { transform: translateX(-100%); }
+}
+/* Neon glow heading */
+h1 {
+  color: #ffffff;
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #0088ff,
+    0 0 70px #0088ff;
+  animation: neonPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  from {
+    text-shadow:
+      0 0 5px #00ffff,
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 30px #0088ff;
+  }
+  to {
+    text-shadow:
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 35px #00ffff,
+      0 0 55px #0088ff,
+      0 0 75px #0088ff;
+  }
+}
+/* Ludo board behind the rotating dice */
+.dice-scene {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  perspective: 700px;
+}
+
+.ludo-board-bg {
+  position: absolute;
+  width: 210px;
+  height: 210px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  border: 4px solid #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 18px #00eaff88;
+  transform: rotate(-8deg);
+  z-index: 0;
+}
+
+.ludo-home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  padding: 13px;
+  border: 2px solid #fff;
+  align-items: center;
+  justify-items: center;
+}
+
+.ludo-home div {
+  width: 23px;
+  height: 23px;
+  background: #fff;
+  border: 2px solid #ffffffbb;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px #0003;
+}
+
+.red-home { background: #f04444; }
+.green-home { background: #27b968; }
+.blue-home { background: #2878ee; }
+.yellow-home { background: #ffd43b; }
+
+.ludo-center {
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.ludo-center div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.center-red {
+  border-width: 0 25px 25px 25px;
+  border-color: transparent transparent #f04444 transparent;
+  transform: translate(-25px, -25px);
+}
+
+.center-green {
+  border-width: 25px 25px 0 25px;
+  border-color: #27b968 transparent transparent transparent;
+  transform: translate(-25px, 0);
+}
+
+.center-blue {
+  border-width: 25px 25px 0 25px;
+  border-color: #2878ee transparent transparent transparent;
+  transform: translate(-25px, -25px) rotate(180deg);
+}
+
+.center-yellow {
+  border-width: 0 25px 25px 25px;
+  border-color: transparent transparent #ffd43b transparent;
+  transform: translate(-25px, 0) rotate(180deg);
+}
+
+/* Keep dice above the board */
+.real-dice {
+  position: relative;
+  z-index: 3;
+}
+/* Neon border around the entire dice section */
+.dice-scene {
+  border: 2px solid #00ffff;
+  border-radius: 18px;
+  box-shadow:
+    0 0 8px #00ffff,
+    0 0 18px #00ffff,
+    0 0 35px #0088ff,
+    inset 0 0 12px #00ffff55;
+  animation: diceBorderNeon 2s ease-in-out infinite alternate;
+}
+
+@keyframes diceBorderNeon {
+  0% {
+    border-color: #00ffff;
+    box-shadow:
+      0 0 8px #00ffff,
+      0 0 18px #00ffff,
+      inset 0 0 10px #00ffff44;
+  }
+  100% {
+    border-color: #ff00ff;
+    box-shadow:
+      0 0 10px #ff00ff,
+      0 0 25px #ff00ff,
+      0 0 40px #8a2be2,
+      inset 0 0 12px #ff00ff44;
+  }
+}
